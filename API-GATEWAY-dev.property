@@ -1,0 +1,39 @@
+server.port=8081
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka
+
+eureka.client.register-with-eureka=true
+eureka.client.fetch-registry=true
+#spring.cloud.gateway.discovery.locator.enabled=true
+#spring.cloud.gateway.discovery.locator.lower-case-service-id=true
+
+#User Microservice
+spring.cloud.gateway.routes[0].id=user-service
+spring.cloud.gateway.routes[0].uri=lb://DARUBAAZUSER
+spring.cloud.gateway.routes[0].predicates[0]=Path=/users/**
+spring.cloud.gateway.routes[0].filters[0]=StripPrefix=1
+
+logging.level.org.springframework.cloud.gateway=DEBUG
+
+#Product MicroService
+spring.cloud.gateway.routes[1].id=product-service
+spring.cloud.gateway.routes[1].uri=lb://PRODUCT
+spring.cloud.gateway.routes[1].predicates[0]=Path=/products/**
+spring.cloud.gateway.routes[1].filters[0]=StripPrefix=1
+
+#Order MicroService
+spring.cloud.gateway.routes[0].id=order-service
+spring.cloud.gateway.routes[0].uri=lb://ORDER
+spring.cloud.gateway.routes[0].predicates[0]=Path=/orders/**
+spring.cloud.gateway.routes[0].filters[0]=StripPrefix=1
+
+#Payment MicroService
+spring.cloud.gateway.routes[0].id=payment-service
+spring.cloud.gateway.routes[0].uri=lb://PAYMENT
+spring.cloud.gateway.routes[0].predicates[0]=Path=/payments/**
+spring.cloud.gateway.routes[0].filters[0]=StripPrefix=1
+
+#Notification MicroService
+spring.cloud.gateway.routes[0].id=notification-service
+spring.cloud.gateway.routes[0].uri=lb://NOTIFICATION
+spring.cloud.gateway.routes[0].predicates[0]=Path=/notifications/**
+spring.cloud.gateway.routes[0].filters[0]=StripPrefix=1
