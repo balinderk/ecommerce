@@ -1,0 +1,17 @@
+server.port=8084
+
+#DATABASE CONFIG
+spring.datasource.url=jbdc:mysql//localhost:3306/payments
+spring.datasource.username=root
+spring.datasource.password=@rootR291299
+
+#JPA CONFIG
+spring.jpa.ddl-auto=update
+spring.jpa.show-sql=true
+
+#EUREKA CLIENT REGISTRATION
+eureka.client.register-with-eureka=true
+eureka.client.fetch-registry=true
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka
+
+
